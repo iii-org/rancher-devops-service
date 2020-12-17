@@ -5,6 +5,7 @@ stages:
     - publishImageConfig:
         dockerfilePath: ./Dockerfile
         buildContext: .
+        # (疑問: 鏡像上傳名稱與TAG)
         tag: app/${CICD_GIT_REPO_NAME}-web:latest
         pushRemote: true
         # (開發環境: registry IP)
@@ -28,10 +29,13 @@ stages:
           git.branch: ${CICD_GIT_BRANCH}
           git.commitID: ${CICD_GIT_COMMIT}
           git.repoName: ${CICD_GIT_REPO_NAME}
-          # web參數設定
+          # (使用者選擇: 專案部屬型態web參數設定)
           web.type: uwsgi-flask
           # (開發環境: 前一步上傳鏡像所需的參數)
           web.image: 10.50.1.63:5443/app/${CICD_GIT_REPO_NAME}-web
           web.tag: latest
+          # (使用者選擇: 要掃描的方案)
           checkmarx.enabled: false
           newman.enabled: false
+          
+  
