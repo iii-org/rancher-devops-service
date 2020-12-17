@@ -1,0 +1,37 @@
+stages:
+  # 建立使用者專用的 Docker Image
+  - name: Publish User Web image
+    steps:
+    - publishImageConfig:
+        dockerfilePath: ./Dockerfile
+        buildContext: .
+        tag: app/${CICD_GIT_REPO_NAME}-web:latest
+        pushRemote: true
+        # (開發環境: registry IP)
+        registry: 10.50.1.63:5443
+        # (開發環境: registry是否有有效憑證)
+      env:
+        PLUGIN_INSECURE: "true"
+
+  # 部屬使用者應用(app)
+  - name: Deploy app-web
+    steps:
+    - applyAppConfig:
+        catalogTemplate: cattle-global-data:iii-dev-charts3-web
+        version: 0.1.0
+        name: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-web
+        # (開發環境: 要部屬的namespace名稱)
+        targetNamespace: p-v2nzs-pipeline
+        answers:
+          # (固定: 基礎pipeline參數)
+          git.url: ${CICD_GIT_URL}
+          git.branch: ${CICD_GIT_BRANCH}
+          git.commitID: ${CICD_GIT_COMMIT}
+          git.repoName: ${CICD_GIT_REPO_NAME}
+          # web參數設定
+          web.type: uwsgi-flask
+          # (開發環境: 前一步上傳鏡像所需的參數)
+          web.image: 10.50.1.63:5443/app/${CICD_GIT_REPO_NAME}-web
+          web.tag: latest
+          checkmarx.enabled: false
+          newman.enabled: false
