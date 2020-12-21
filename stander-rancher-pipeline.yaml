@@ -22,7 +22,7 @@ stages:
         version: 0.1.0
         name: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-web
         # (開發環境: 要部屬的namespace名稱)
-        targetNamespace: p-v2nzs-pipeline
+        targetNamespace: ${CICD_GIT_REPO_NAME}
         answers:
           # (固定: 基礎pipeline參數)
           git.url: ${CICD_GIT_URL}
@@ -46,7 +46,7 @@ stages:
         version: 0.1.0
         name: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}
         # (開發環境: 要部屬的namespace名稱)
-        targetNamespace: p-v2nzs-pipeline
+        targetNamespace: ${CICD_GIT_REPO_NAME}
         answers:
           # (開發環境: git source IP)
           git.host: "10.50.1.53"
