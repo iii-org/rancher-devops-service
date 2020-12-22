@@ -16,6 +16,11 @@ sudo docker login 10.50.1.63:5443 -u admin -p Harbor12345
 sudo docker image rm 10.50.1.63:5443/china/uwsgi-nginx-flask:python3.8
 sudo docker rm 10.50.1.63:5443/app/flask-app-pipeline-template-build
 
+## 拉下鏡像所費時間
+SECONDS=0
+sudo docker pull 10.50.1.63:5443/china/uwsgi-nginx-flask:python3.8
+duration=$SECONDS
+echo ">>>>>>>> 下載鏡像花費時間(build image): $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
 ## 建立鏡像
 SECONDS=0
 sudo docker build -t 10.50.1.63:5443/app/flask-app-pipeline-template-build . --no-cache
