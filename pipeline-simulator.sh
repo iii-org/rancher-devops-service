@@ -33,7 +33,7 @@ duration=$SECONDS
 echo ">>>>>>>> 上傳鏡像花費時間(push image): $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
 
 cd ..
-rm -R -f test_repo
+sudo rm -R -f test_repo
 
 #duration=$SECONDS
 #echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
