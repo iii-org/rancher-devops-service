@@ -1,13 +1,14 @@
-!/bin/bash
+#!/bin/bash
 
+echo 'start pipeline simulator'
 SECONDS=0
 
 ## 複製專案
 mkdir test_repo
 cd test_repo
-git clone git clone http://10.50.1.53/root/flask-app-pipeline-template .
+git clone http://10.50.1.53/root/flask-app-pipeline-template .
 duration=$SECONDS
-echo "copy repo: $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
+echo ">>>>>>>> 複製專案內容花費時間(copy repo): $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
 
 ## 登入private git registry
 sudo docker login 10.50.1.63:5443 -u admin -p Harbor12345
@@ -19,12 +20,15 @@ sudo docker rm 10.50.1.63:5443/app/flask-app-pipeline-template-build
 SECONDS=0
 sudo docker build -t 10.50.1.63:5443/app/flask-app-pipeline-template-build . --no-cache
 duration=$SECONDS
-echo "build image: $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
+echo ">>>>>>>> 編譯鏡像花費時間(build image): $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
 ## 上傳鏡像
 SECONDS=0
 sudo docker push 10.50.1.63:5443/app/flask-app-pipeline-template-build:latest
 duration=$SECONDS
-echo "push image: $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
+echo ">>>>>>>> 上傳鏡像花費時間(push image): $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
+
+cd ..
+rm -R -f test_repo
 
 #duration=$SECONDS
 #echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
