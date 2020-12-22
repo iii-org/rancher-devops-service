@@ -13,8 +13,9 @@ echo ">>>>>>>> 複製專案內容花費時間(copy repo): $(($duration / 60)) mi
 ## 登入private git registry
 sudo docker login 10.50.1.63:5443 -u admin -p Harbor12345
 ## 刪除local image
-sudo docker image rm 10.50.1.63:5443/china/uwsgi-nginx-flask:python3.8
-sudo docker rm 10.50.1.63:5443/app/flask-app-pipeline-template-build
+#sudo docker image rm 10.50.1.63:5443/china/uwsgi-nginx-flask:python3.8
+#sudo docker image rm 10.50.1.63:5443/app/flask-app-pipeline-template-build
+sudo docker rmi $(sudo docker image ls |grep 10.50.1.63)
 
 ## 拉下鏡像所費時間
 SECONDS=0
