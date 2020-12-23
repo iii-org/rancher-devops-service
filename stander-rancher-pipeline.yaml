@@ -36,6 +36,7 @@ stages:
           web.tag: latest
           # (使用者選擇: 要掃描的方案)
           checkmarx.enabled: false
+          checkmarx.version: "latest"
           newman.enabled: false
   
   # 部屬使用者資料庫服務
