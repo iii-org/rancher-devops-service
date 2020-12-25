@@ -1,0 +1,9 @@
+version: '2.1'
+services:
+  pipeline-generate-service:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.pipeline-generate-service
+    image: pg-service
+    ports:
+      - 5000:5000

@@ -1,1 +1,7 @@
-FROM python3.8
+FROM python:3.8
+
+RUN pip install flask flask-json pyyaml
+
+ADD . / app/
+
+CMD python3 /app/部屬測試pipeline-generator.py
