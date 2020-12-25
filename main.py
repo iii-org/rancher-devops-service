@@ -7,7 +7,7 @@
 # 參考資料
 # * [flask-json](https://flask-json.readthedocs.io/en/latest/)
 
-# In[1]:
+# In[ ]:
 
 
 from datetime import datetime
@@ -22,7 +22,7 @@ FlaskJSON(app)
 
 # #### 接受使用者要產生web專案的pipeline請求
 
-# In[2]:
+# In[ ]:
 
 
 @app.route('/pipeline/web', methods=['POST'])
@@ -44,7 +44,7 @@ def generate_web_pipeline():
 
 # #### 接受使用者要產生db專案的pipeline請求
 
-# In[4]:
+# In[ ]:
 
 
 @app.route('/pipeline/db', methods=['POST'])
@@ -68,7 +68,7 @@ def generate_db_pipeline():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', debug=True, port=80)
 
 
 # In[ ]:
