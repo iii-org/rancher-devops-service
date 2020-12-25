@@ -5,5 +5,9 @@ services:
       context: .
       dockerfile: ./Dockerfile.pipeline-generate-service
     image: pg-service
+    environment:
+      - DEVOPS_REGISTRY="10.20.0.99"
+      - REGISTRY_INSECURE='True'
+      - GIT_HOST='10.20.77.77'
     ports:
       - 9080:80
