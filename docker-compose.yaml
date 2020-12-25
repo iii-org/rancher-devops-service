@@ -6,4 +6,4 @@ services:
       dockerfile: ./Dockerfile.pipeline-generate-service
     image: pg-service
     ports:
-      - 5000:5000
+      - 9080:80
