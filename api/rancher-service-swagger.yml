@@ -1,6 +1,11 @@
 openapi: '3.0.2'
 info:
   title: rancher-pipeline服務機制
+  description: 描述rancher-devops-service本身所具有的服務API文件說明
+  contact:
+    name: Institute for Information Industry (III) - devops
+    url: https://web.iii.org.tw/
+    email: m0724001@gm.nuu.edu.tw
   version: '1.0'
 servers:
   - url: https://localhost:9080
