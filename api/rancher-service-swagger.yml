@@ -1,0 +1,72 @@
+openapi: '3.0.2'
+info:
+  title: rancher-pipeline服務機制
+  version: '1.0'
+servers:
+  - url: https://localhost:9080
+paths:
+  /pipeline/web:
+    post:
+      summary: 產生專屬於web類型專案的pipeline檔案內容
+      requestBody:
+        description: web專案的json格式資料
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                checkmarx:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                      example: true
+                    version:
+                      type: string
+                      example: 0.9.2
+                newman:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                      example: true
+                web:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      example: php
+      responses:
+        '200':
+          description: OK
+  /pipeline/db:
+    post:
+      summary: 產生專屬於db類型專案的pipeline專案內容
+      requestBody:
+        description: db專案的json格式資料
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                db:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      example: mariadb
+                    gui:
+                      type: boolean
+                      example: true
+                    username:
+                      type: string
+                      example: bear
+                    password:
+                      type: string
+                      example: bearisbear
+                    name:
+                      type: string
+                      example: health
+      responses:
+        '200':
+          description: OK
