@@ -1,0 +1,40 @@
+stages:
+  # 建立 rancher_pipeline 專用的 Docker Image
+  - name: Publish rancher pipeline service image
+    steps:
+    - publishImageConfig:
+        dockerfilePath: ./Dockerfile.pipeline-generate-service
+        buildContext: .
+        tag: ${CICD_GIT_REPO_NAME}/rancher-pipeline-service:latest
+        pushRemote: true
+        registry: 10.50.1.63:5443
+      env:
+        PLUGIN_INSECURE: "true"
+
+  # 部屬使用者應用(app) rancher_pipeline
+  - name: Deploy rancher_pipeline_service
+    steps:
+    - applyAppConfig:
+        catalogTemplate: cattle-global-data:iii-dev-charts3-web
+        version: 0.1.0
+        name: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-web
+        #targetNamespace: p-v2nzs-pipeline
+        targetNamespace: ${CICD_GIT_REPO_NAME}
+        answers:
+          # 基礎pipeline參數
+          git.url: ${CICD_GIT_URL}
+          git.branch: ${CICD_GIT_BRANCH}
+          git.commitID: ${CICD_GIT_COMMIT}
+          git.repoName: ${CICD_GIT_REPO_NAME}
+          # web參數設定
+          web.type: uwsgi-flask
+          # 10.50.1.63:5443/app/${CICD_GIT_REPO_NAME}-web
+          web.image: 10.50.1.63:5443/${CICD_GIT_REPO_NAME}/web
+          web.tag: latest
+          checkmarx.enabled: true
+          checkmarx.version: "0.9.2"
+          newman.enabled: false
+          apieditor.enabled: true
+          apieditor.filename: rancher-service-swagger.yml
+          codeServer.enabled: false
+          codeServer.PASSWORD: happybear

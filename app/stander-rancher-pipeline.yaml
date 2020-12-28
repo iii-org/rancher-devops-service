@@ -1,0 +1,65 @@
+stages:
+  # 建立使用者專用的 Docker Image
+  - name: Publish User Web image
+    steps:
+    - publishImageConfig:
+        dockerfilePath: ./Dockerfile
+        buildContext: .
+        # (疑問: 鏡像上傳名稱與TAG)
+        tag: ${CICD_GIT_REPO_NAME}/${CICD_GIT_BRANCH}-web:latest
+        pushRemote: true
+        # (開發環境: registry IP)
+        registry: 10.50.1.63:5443
+        # (開發環境: registry是否有有效憑證)
+      env:
+        PLUGIN_INSECURE: "true"
+
+  # 部屬使用者應用(app)
+  - name: Deploy app-web
+    steps:
+    - applyAppConfig:
+        catalogTemplate: cattle-global-data:iii-dev-charts3-web
+        version: 0.1.0
+        name: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-web
+        # (開發環境: 要部屬的namespace名稱)
+        targetNamespace: ${CICD_GIT_REPO_NAME}
+        answers:
+          # (固定: 基礎pipeline參數)
+          git.url: ${CICD_GIT_URL}
+          git.branch: ${CICD_GIT_BRANCH}
+          git.commitID: ${CICD_GIT_COMMIT}
+          git.repoName: ${CICD_GIT_REPO_NAME}
+          # (使用者選擇: 專案部屬型態web參數設定)
+          web.type: uwsgi-flask
+          # (開發環境: 前一步上傳鏡像所需的參數)
+          web.image: 10.50.1.63:5443/${CICD_GIT_REPO_NAME}/${CICD_GIT_BRANCH}-web:latest
+          web.tag: latest
+          # (使用者選擇: 要掃描的方案)
+          checkmarx.enabled: false
+          checkmarx.version: "latest"
+          newman.enabled: false
+  
+  # 部屬使用者資料庫服務
+  - name: Deploy app-db
+    steps:
+    - applyAppConfig:
+        catalogTemplate: cattle-global-data:iii-dev-charts3-db
+        version: 0.1.0
+        name: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}
+        # (開發環境: 要部屬的namespace名稱)
+        targetNamespace: ${CICD_GIT_REPO_NAME}
+        answers:
+          # (開發環境: git source IP)
+          git.host: "10.50.1.53"
+          # 這裡是為了告訴要處理的git來源為何
+          # (固定: 基礎pipeline參數)
+          git.repoName: ${CICD_GIT_REPO_NAME}
+          git.branch: ${CICD_GIT_BRANCH}
+          # (使用者選擇: 專案資料庫部屬型態方案)
+          db.type: mysql
+          # (使用者選擇: 專案資料庫部屬使用者資料庫管理密碼) 
+          db.username: bear
+          db.password: bearisbear
+          # (使用者選擇: 專案資料庫部屬使用者資料庫名稱)
+          db.name: health
+  
