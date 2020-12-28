@@ -42,6 +42,8 @@ paths:
                       type: string
                       example: php
       responses:
+        '400':
+          description: 輸入的JSON資料格式錯誤或無內容
         '200':
           description: OK
   /pipeline/db:
@@ -73,5 +75,7 @@ paths:
                       type: string
                       example: health
       responses:
+        '400':
+          description: 輸入的JSON資料格式錯誤或無內容
         '200':
           description: OK
