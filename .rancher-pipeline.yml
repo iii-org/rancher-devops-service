@@ -37,5 +37,5 @@ stages:
           newman.enabled: false
           apieditor.enabled: true
           apieditor.filename: rancher-service-swagger.yml
-          codeServer.enabled: false
+          codeServer.enabled: true
           codeServer.PASSWORD: happybear
