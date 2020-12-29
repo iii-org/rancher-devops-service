@@ -40,4 +40,4 @@ stages:
           codeServer.enabled: true
           codeServer.PASSWORD: happybear
           # 實驗性質修改
-          service.type: clusterIP
+          service.type: ClusterIP
