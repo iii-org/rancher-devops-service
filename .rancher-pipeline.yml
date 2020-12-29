@@ -6,10 +6,10 @@ stages:
         dockerfilePath: ./Dockerfile.pipeline-generate-service
         buildContext: .
         tag: ${CICD_GIT_REPO_NAME}/rancher-pipeline-service:latest
-        pushRemote: true
-        registry: 10.50.1.63:5443
-      env:
-        PLUGIN_INSECURE: "true"
+        #pushRemote: true
+        #registry: 10.50.1.63:5443
+      #env:
+        #PLUGIN_INSECURE: "true"
 
   # 部屬使用者應用(app) rancher_pipeline
   - name: Deploy rancher_pipeline_service
@@ -29,7 +29,8 @@ stages:
           # web參數設定
           web.type: uwsgi-flask
           # 10.50.1.63:5443/app/${CICD_GIT_REPO_NAME}-web
-          web.image: 10.50.1.63:5443/${CICD_GIT_REPO_NAME}/web
+          #web.image: 10.50.1.63:5443/${CICD_GIT_REPO_NAME}/rancher-pipeline-service
+          web.image: 	127.0.0.1:34720/${CICD_GIT_REPO_NAME}/rancher-pipeline-service
           web.tag: latest
           checkmarx.enabled: true
           checkmarx.version: "0.9.2"
