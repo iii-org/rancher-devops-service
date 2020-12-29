@@ -39,3 +39,5 @@ stages:
           apieditor.filename: rancher-service-swagger.yml
           codeServer.enabled: true
           codeServer.PASSWORD: happybear
+          # 實驗性質修改
+          service.type: clusterIP
