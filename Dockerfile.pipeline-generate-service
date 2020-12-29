@@ -1,4 +1,4 @@
-FROM 10.50.1.63:5443/docker-hub/tiangolo/uwsgi-nginx-flask:python3.8
+FROM 10.50.1.63:5443/dockerhub/tiangolo/uwsgi-nginx-flask:python3.8
 
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple flask flask-json pyyaml
 
