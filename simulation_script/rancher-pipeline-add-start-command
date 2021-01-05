@@ -1,0 +1,6 @@
+#!/bin/bash
+for i in {1..200}
+do
+  sleep 5s
+  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' 'https://10.20.0.71:6443/v3/project/c-dzhkf:p-z4qgw/pipelines/p-z4qgw:p-h8bqg?action=run'
+done
