@@ -8,28 +8,28 @@ for i in {1..200}
 do
   sleep 5s
   echo -n "root/pipeline-example-go-6"
-  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-c9rwt?action=run"
+  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-87jbw?action=run"
   #sleep 1s
   # root/pipeline-example-go-6
-  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-sfhlf?action=run" 
+  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-lflkd?action=run" 
   #sleep 1s
   # root/pipeline-example-go-7
-  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-nz8g5?action=run"
+  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-r7dt8?action=run"
   #sleep 1s
   # root/pipeline-example-go-8
-  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-hrmqw?action=run"
+  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-2d8v6?action=run"
   #sleep 1s
   # root/pipeline-example-go-9
-  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-b68ls?action=run"
+  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-cvmdw?action=run"
   #sleep 1s
   # root/pipeline-example-go-10
-  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-nkkf5?action=run"
+  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-zqbq9?action=run"
   #sleep 1s
   # root/pipeline-example-go-11
-  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-nkrw6?action=run"
+  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-tlmxd?action=run"
   #sleep 1s
   # root/pipeline-example-go-12
-  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-xqt9b?action=run"
+  curl -k -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"branch":"master"}' "${CATTLE_END_POINT}/project/${CATTLE_PROJECT}/pipelines/p-ww7hq:p-fwx9p?action=run"
   #sleep 1s
   echo 'end one round'
 done
